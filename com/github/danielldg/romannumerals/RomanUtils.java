@@ -48,14 +48,14 @@ public class RomanUtils {
 			throw new InvalidOrUnexpectedNumber("Unexpected null or empty string");
 		}
 
-		String romanInput = s;
+		String romanInput = s.toUpperCase();
 		char[] arabicOutput = {'0','0','0','0'};
 
 		for (int i = THOUSANDS.length - 1; i > 0; i--) {
 			String romanValue = THOUSANDS[i];
 			if (romanInput.startsWith(romanValue)) {
 				arabicOutput[0] = Character.forDigit(i, 10);
-				romanInput = romanInput.replace(romanValue, "");
+				romanInput = romanInput.substring(romanValue.length());
 				break;
 			}
 		}
@@ -64,7 +64,7 @@ public class RomanUtils {
 			String romanValue = HUNDREDS[i];
 			if (romanInput.startsWith(romanValue)) {
 				arabicOutput[1] = Character.forDigit(i, 10);
-				romanInput = romanInput.replace(romanValue, "");
+				romanInput = romanInput.substring(romanValue.length());
 				break;
 			}
 		}
@@ -73,7 +73,7 @@ public class RomanUtils {
 			String romanValue = TENS[i];
 			if (romanInput.startsWith(romanValue)) {
 				arabicOutput[2] = Character.forDigit(i, 10);
-				romanInput = romanInput.replace(romanValue, "");
+				romanInput = romanInput.substring(romanValue.length());
 				break;
 			}
 		}
@@ -82,7 +82,7 @@ public class RomanUtils {
 			String romanValue = UNITS[i];
 			if (romanInput.startsWith(romanValue)) {
 				arabicOutput[3] = Character.forDigit(i, 10);
-				romanInput = romanInput.replace(romanValue, "");
+				romanInput = romanInput.substring(romanValue.length());
 				break;
 			}
 		}
