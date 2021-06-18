@@ -139,6 +139,14 @@ class RomanUtilsTest {
 			assertEquals(Integer.parseInt(expectedArabic), actualArabic);
 		}
 
+		@DisplayName("Lower case roman are valid values")
+		@ParameterizedTest(name = "Value {0} is {1}")
+		@CsvSource({"MdCcLxXvI,1776","mCmXvIiI,1918","mCmLiV,1954","mMxIv,2014","MmXxI,2021"})
+		void toRomanLowerCase(String romanInput, String expectedArabic) throws InvalidOrUnexpectedNumber {
+			int actualArabic = RomanUtils.toArabic(romanInput);
+			assertEquals(Integer.parseInt(expectedArabic), actualArabic);
+		}
+
 	}
 
 }
